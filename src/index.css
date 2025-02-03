@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  background: #f8fafc;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900;
+  }
+
+  /* Animated underline effect for links */
+  .nav-link {
+    @apply relative inline-block;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    @apply relative py-20;
+  }
+
+  .section-divider::before {
+    content: '';
+    @apply absolute top-0 left-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent -translate-x-1/2;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply relative overflow-hidden bg-green-600 text-white px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50;
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-white/20 transform -skew-x-45 -translate-x-full transition-transform duration-500;
+  }
+
+  .btn-primary:hover::before {
+    @apply translate-x-full;
+  }
+  
+  .btn-secondary {
+    @apply relative overflow-hidden border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-green-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50;
+  }
+  
+  .section-title {
+    @apply relative text-4xl md:text-5xl font-bold text-center mb-16;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-24 h-1 bg-gradient-to-r from-green-600 to-green-400 -translate-x-1/2 mt-4;
+  }
+}
+
+/* Reveal animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.reveal-on-scroll.active {
+  opacity: 1;
+}
+
+.fade-left {
+  transform: translateX(-50px);
+}
+
+.fade-right {
+  transform: translateX(50px);
+}
+
+.fade-up {
+  transform: translateY(50px);
+}
+
+.fade-left.active,
+.fade-right.active,
+.fade-up.active {
+  transform: translateX(0);
+}
+
+/* Diagonal pattern background */
+.pattern-diagonal {
+  background-image: linear-gradient(45deg, #000 25%, transparent 25%),
+    linear-gradient(-45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
